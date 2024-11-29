@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     },
     bg: {
       width: screenWidth,
-      bottom: screenHeight * 0.2,
+      bottom: screenHeight * 0.18,
 resizeMode:'stretch',
     },
 
@@ -28,7 +28,7 @@ resizeMode:'stretch',
    display:'flex',
    
    position: 'absolute',
-   top: screenHeight * 0.1,
+   top: screenHeight * 0.15,
 zIndex: 1,
 paddingLeft: 20,
     },
@@ -44,7 +44,7 @@ paddingLeft: 20,
 
     titleText2: {
       color:  'rgba(255, 255, 255, 1)',
-      fontSize: 20,
+      fontSize: 17,
       marginTop : 10,
       textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowOffset: { width: 3, height: 3 },
