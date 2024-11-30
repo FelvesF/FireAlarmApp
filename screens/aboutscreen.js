@@ -1,5 +1,19 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Header from '../components/header';
+
+
+
+const Aboutscreen =() => {
+  return (
+    
+    <View style={styles.container}>
+      <Header title='About Us'/>
+      <Text style={styles.text}>About us Screen</Text>
+    </View>
+   
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -13,14 +27,5 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
 });
-
-const Aboutscreen =() => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>About us Screen</Text>
-    </View>
-  );
-};
-
 
 export default Aboutscreen;

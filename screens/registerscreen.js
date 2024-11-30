@@ -1,10 +1,110 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity,TextInput,Image, Dimensions } from 'react-native';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth, db } from '../firebase';  // Import Firestore
+import { setDoc, doc } from "firebase/firestore";  // Firestore functions to add documents
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const styles = StyleSheet.create({
+
+
+
+const Registerscreen = ({ navigation }) => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState(''); // Added name state
+  const [error, setError] = useState('');
+
+  const handleRegister = async () => {
+    try {
+      // Create user with email and password
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // After user is registered, add a document to Firestore
+      const userRef = doc(db, "users", user.uid);  // Create a new document with the user's UID
+      await setDoc(userRef, {
+        name: name || "Default Name",  // Set default name if not provided
+        profilePicture: "https://example.com/default-avatar.jpg", // Placeholder profile image URL
+      });
+
+      navigation.navigate('login');
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+    return (
+      <View style={styles.container}>
+ {error ? <Text style={styles.error}>{error}</Text> : null}
+        <View style={styles.title}>
+  <Text style={styles.titleText}>FIRE</Text>
+  <Text style={styles.titleText}>ALARM</Text>
+  <Text style={styles.titleText2}>Detect. Alert. Protect.</Text>
+  </View>
+
+<View>
+<Image style={styles.bg} source={require('../assets/images/firealarmbg.png')}></Image>
+
+</View>
+
+        <View style={styles.registerform}>
+        <Text style={styles.register}>Register Account</Text>
+        <TextInput
+            style={styles.input}
+            placeholder="Name"
+            placeholderTextColor="rgba(44, 29, 27, 0.8)"
+            value={name}
+        onChangeText={setName}
+          
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            placeholderTextColor="rgba(44, 29, 27, 0.8)"
+            value={email}
+            onChangeText={setEmail}
+          
+          />
+<TextInput
+            style={styles.input}
+            placeholder="Password"
+            placeholderTextColor="rgba(44, 29, 27, 0.8)"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+          
+          />
+
+
+ <TouchableOpacity
+         onPress={handleRegister}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Sign Up</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity
+          onPress={() => navigation.navigate('login')}
+          style={styles.forgot}
+        >
+          <Text style={styles.forgotText}>Already have an account?</Text>
+        </TouchableOpacity>
+       
+      
+        
+
+
+        </View>
+        
+      </View>
+    );
+  };
+
+
+  const styles = StyleSheet.create({
     container: {
       flex: 1,
       display:'flex',
@@ -111,73 +211,6 @@ color : 'rgba(255, 255, 255, 1)',
     },
   
   });
-
-const Registerscreen = ({ navigation }) => {
-    return (
-      <View style={styles.container}>
-
-        <View style={styles.title}>
-  <Text style={styles.titleText}>FIRE</Text>
-  <Text style={styles.titleText}>ALARM</Text>
-  <Text style={styles.titleText2}>Detect. Alert. Protect.</Text>
-  </View>
-
-<View>
-<Image style={styles.bg} source={require('../assets/images/firealarmbg.png')}></Image>
-
-</View>
-
-
-
-
-        
-        <View style={styles.registerform}>
-        <Text style={styles.register}>Register Account</Text>
-        <TextInput
-            style={styles.input}
-            placeholder="Name"
-            placeholderTextColor="rgba(44, 29, 27, 0.8)"
-          
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Username"
-            placeholderTextColor="rgba(44, 29, 27, 0.8)"
-            
-          
-          />
-<TextInput
-            style={styles.input}
-            placeholder="Password"
-            placeholderTextColor="rgba(44, 29, 27, 0.8)"
-            
-          
-          />
-
-
- <TouchableOpacity
-          onPress={() => navigation.navigate('login')}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>Sign Up</Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity
-          onPress={() => navigation.navigate('login')}
-          style={styles.forgot}
-        >
-          <Text style={styles.forgotText}>Already have an account?</Text>
-        </TouchableOpacity>
-       
-      
-        
-
-
-        </View>
-        
-      </View>
-    );
-  };
   
 
 export default Registerscreen

@@ -1,10 +1,93 @@
-import React from 'react';
+import React,  { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity,TextInput,Image, Dimensions } from 'react-native';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const styles = StyleSheet.create({
+const Loginscreen = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      navigation.navigate('drawernav');
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+    return (
+      <View style={styles.container}>
+        {error ? <Text style={styles.error}>{error}</Text> : null}
+
+        <View style={styles.title}>
+  <Text style={styles.titleText}>FIRE</Text>
+  <Text style={styles.titleText}>ALARM</Text>
+  <Text style={styles.titleText2}>Detect. Alert. Protect.</Text>
+  </View>
+
+<View>
+<Image style={styles.bg} source={require('../assets/images/firealarmbg.png')}></Image>
+
+</View>
+
+        <View style={styles.loginform}>
+        <Text style={styles.login}>Log In</Text>
+      
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+              placeholderTextColor="rgba(44, 29, 27, 0.8)"
+        value={email}
+        onChangeText={setEmail}
+          
+          />
+<TextInput
+            style={styles.input}
+            placeholder="Password"
+            placeholderTextColor="rgba(44, 29, 27, 0.8)"
+            secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+            
+          
+          />
+
+
+ <TouchableOpacity
+         onPress={handleLogin}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Log in</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity
+          onPress={() => navigation.navigate('register')}
+          style={styles.forgot}
+        >
+          <Text style={styles.forgotText}>Forgot Password?</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('register')}
+          style={styles.forgot}
+        >
+          <Text style={styles.forgotText}>Don't have an account?</Text>
+        </TouchableOpacity>
+      
+        
+
+
+        </View>
+        
+      </View>
+    );
+  };
+  
+  const styles = StyleSheet.create({
     container: {
       flex: 1,
       display:'flex',
@@ -112,72 +195,5 @@ color : 'rgba(255, 255, 255, 1)',
   
   });
 
-const Loginscreen = ({ navigation }) => {
-    return (
-      <View style={styles.container}>
 
-        <View style={styles.title}>
-  <Text style={styles.titleText}>FIRE</Text>
-  <Text style={styles.titleText}>ALARM</Text>
-  <Text style={styles.titleText2}>Detect. Alert. Protect.</Text>
-  </View>
-
-<View>
-<Image style={styles.bg} source={require('../assets/images/firealarmbg.png')}></Image>
-
-</View>
-
-
-
-
-        
-        <View style={styles.loginform}>
-        <Text style={styles.login}>Log In</Text>
-      
-          <TextInput
-            style={styles.input}
-            placeholder="Username"
-            placeholderTextColor="rgba(44, 29, 27, 0.8)"
-            
-          
-          />
-<TextInput
-            style={styles.input}
-            placeholder="Password"
-            placeholderTextColor="rgba(44, 29, 27, 0.8)"
-            
-          
-          />
-
-
- <TouchableOpacity
-          onPress={() => navigation.navigate('drawernav')}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>Log in</Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity
-          onPress={() => navigation.navigate('register')}
-          style={styles.forgot}
-        >
-          <Text style={styles.forgotText}>Forgot Password?</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('register')}
-          style={styles.forgot}
-        >
-          <Text style={styles.forgotText}>Don't have an account?</Text>
-        </TouchableOpacity>
-      
-        
-
-
-        </View>
-        
-      </View>
-    );
-  };
-  
-
-export default Loginscreen
+export default Loginscreen;
