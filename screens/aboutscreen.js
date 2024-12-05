@@ -1,21 +1,32 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/header';
-
-
 
 const Aboutscreen =() => {
   return (
-    
+   
+    <SafeAreaView style={styles.safe}>
+       <StatusBar
+    backgroundColor="rgba(80, 26, 33, 1)"
+    barStyle="light-content"
+  />
+    <Header title='ABOUT US'/>
     <View style={styles.container}>
-      <Header title='About Us'/>
+      
       <Text style={styles.text}>About us Screen</Text>
     </View>
-   
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safe: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+  },
   container: {
     flex: 1,
     justifyContent: 'center',

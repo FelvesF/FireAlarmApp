@@ -17,25 +17,16 @@ const Header =({title}) => {
     <View style={styles.header}>
       <Text style={styles.headertitle}>{title}</Text>
       <View style={styles.headericons}>
-      <TouchableOpacity
-            
-            onPress={() => navigation.navigate('home')}
-        >
-            <AntDesign name="home" size={24} color="white" />
+      <TouchableOpacity onPress={() => navigation.navigate('home')} >
+            <AntDesign name="home" size={28} color="white" />
         </TouchableOpacity>
 
-        <TouchableOpacity
-                
-                onPress={() => navigation.navigate('about')}
-              >
-                <Ionicons name="notifications-outline" size={24} color="white" />
+        <TouchableOpacity onPress={() => navigation.navigate('about')} >
+                <Ionicons name="notifications-outline" size={28} color="white" />
               </TouchableOpacity>
 
-              <TouchableOpacity
-                
-                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-              >
-                <FontAwesome name="navicon" size={24} color="white" />
+              <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())} >
+                <FontAwesome name="navicon" size={28} color="white" />
               </TouchableOpacity>
         </View>
     </View>
@@ -47,30 +38,28 @@ const Header =({title}) => {
 const styles = StyleSheet.create({
   
     header: {
-      height: 100,
+      height: 70,
       width : screenWidth,
-      backgroundColor: 'pink',
+      backgroundColor: 'rgba(80, 26, 33, 1)',
       display: 'flex',
     flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      paddingHorizontal: 15,
+      paddingHorizontal: 18,
+      elevation: 20,
     },
     headertitle: {
-       
-      fontSize: 24,
+       color: 'white',
+      fontSize: 28,
       fontWeight: 'bold',
-      marginBottom: 16,
+      
     },
 headericons: {
-   width: 150,
+   width: 120,
    height: 50,
-   borderWidth: 2,
-   borderColor: 'green',
-   borderStyle: 'solid',
-    backgroundColor: 'purple',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     },
 
   });

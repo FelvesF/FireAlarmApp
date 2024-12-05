@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Text, Image, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { View, TextInput, Text, Image, StyleSheet, TouchableOpacity, StatusBar, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { auth, db } from '../firebase';  // Import Firestore and auth
 import { getDoc, doc, updateDoc } from "firebase/firestore";  // Firestore functions to get and update documents
 import { updatePassword, updateEmail } from 'firebase/auth';  // Firebase Auth functions
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Icon from 'react-native-vector-icons/Entypo';  // Import the hamburger menu icon
+import Header from '../components/header';
 
 
 
@@ -68,6 +68,14 @@ const Accountscreen = ({ navigation }) => {
   );
 
   return (
+
+    <SafeAreaView style={styles.safe}>
+       <StatusBar
+    backgroundColor="rgba(80, 26, 33, 1)"
+    barStyle="light-content"
+  />
+    <Header title='MY PROFILE'/>
+
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'} // Different behavior for iOS and Android
     >
@@ -119,10 +127,19 @@ const Accountscreen = ({ navigation }) => {
           style={{ backgroundColor: '#501a21' }}
         />
     </KeyboardAvoidingView>
+
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+
+  safe: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+  },
   container: {
     flex: 1,
   },

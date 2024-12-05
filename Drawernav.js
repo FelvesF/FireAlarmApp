@@ -94,95 +94,13 @@ const Drawernav = () => {
       <Drawer.Screen
       name="about"
       component={Aboutscreen}
-      
-      options={{ headerTitle: 'ABOUT US',
-        headerTitleStyle: {
-          color: 'white',
-          fontSize: 25, 
-          textAlign: 'center',
-          
-          marginLeft: 10,
-        },
-        headerLeft: false,
-        headerRight: () => {
-          const navigation = useNavigation();
-          return (
-            <View style={{ flexDirection: 'row' }}>
-<TouchableOpacity
-                style={{ marginRight: 20 }}
-                onPress={() => navigation.navigate('home')}
-              >
-                <AntDesign name="home" size={24} color="white" />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{ marginRight: 20 }}
-                onPress={() => navigation.navigate('about')}
-              >
-                <Ionicons name="notifications-outline" size={24} color="white" />
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={{ marginRight: 20 }}
-                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-              >
-                <FontAwesome name="navicon" size={24} color="white" />
-              </TouchableOpacity>
-            </View>
-          );
-        },
-headerStyle: {
-height: 100,
-backgroundColor: 'rgba(80, 26, 33, 1)',
-elevation: 20,
-}
-         }}
+      options={{ headerShown: false }}
       />
 
 <Drawer.Screen
       name="account"
       component={Accountscreen}
-      
-      options={{ headerTitle: 'MY PROFILE',
-        headerTitleStyle: {
-          color: 'white',
-          fontSize: 25, 
-          textAlign: 'center',
-          
-          marginLeft: 10,
-        },
-        headerLeft: false,
-        headerRight: () => {
-          const navigation = useNavigation();
-          return (
-            <View style={{ flexDirection: 'row' }}>
-<TouchableOpacity
-                style={{ marginRight: 20 }}
-                onPress={() => navigation.navigate('home')}
-              >
-                <AntDesign name="home" size={24} color="white" />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={{ marginRight: 20 }}
-                onPress={() => navigation.navigate('about')}
-              >
-                <Ionicons name="notifications-outline" size={24} color="white" />
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={{ marginRight: 20 }}
-                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-              >
-                <FontAwesome name="navicon" size={24} color="white" />
-              </TouchableOpacity>
-            </View>
-          );
-        },
-headerStyle: {
-height: 100,
-backgroundColor: 'rgba(80, 26, 33, 1)',
-elevation: 20,
-}
-         }}
+      options={{ headerShown: false }}
       />
     </Drawer.Navigator>
   );
