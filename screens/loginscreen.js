@@ -1,7 +1,7 @@
 import React,  { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity,TextInput,Image, Dimensions } from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
+import { auth } from '../firebaseConfig';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;

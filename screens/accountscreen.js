@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, TextInput, Text, Image, StyleSheet, TouchableOpacity, StatusBar, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { auth, db } from '../firebase';  // Import Firestore and auth
+import { auth, db } from '../firebaseConfig';  // Import Firestore and auth
 import { getDoc, doc, updateDoc } from "firebase/firestore";  // Firestore functions to get and update documents
 import { updatePassword, updateEmail } from 'firebase/auth';  // Firebase Auth functions
 import { SafeAreaView } from 'react-native-safe-area-context';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity,TextInput,Image, Dimensions } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../firebase';  // Import Firestore
+import { auth, db } from '../firebaseConfig';  // Import Firestore
 import { setDoc, doc } from "firebase/firestore";  // Firestore functions to add documents
 
 const screenWidth = Dimensions.get('window').width;
