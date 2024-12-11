@@ -30,13 +30,13 @@ const Loginscreen = ({ navigation }) => {
   <Text style={styles.titleText2}>Detect. Alert. Protect.</Text>
   </View>
 
-<View>
+<View style={styles.bgview}>
 <Image style={styles.bg} source={require('../assets/images/firealarmbg.png')}></Image>
 
 </View>
 
         <View style={styles.loginform}>
-        <Text style={styles.login}>Log In</Text>
+        <Text style={styles.logintitle}>Log In</Text>
       
           <TextInput
             style={styles.input}
@@ -54,7 +54,6 @@ const Loginscreen = ({ navigation }) => {
         value={password}
         onChangeText={setPassword}
             
-          
           />
 
 
@@ -98,9 +97,16 @@ const Loginscreen = ({ navigation }) => {
      
       
     },
+    bgview: {
+      position: 'absolute',
+      zIndex: 1,
+     
+      top: screenHeight * 0,
+    },
+
     bg: {
       width: screenWidth,
-      bottom: screenHeight * 0.18,
+      bottom: screenHeight * 0.1,
 resizeMode:'stretch',
     },
 
@@ -111,8 +117,8 @@ resizeMode:'stretch',
    display:'flex',
    
    position: 'absolute',
-   top: screenHeight * 0.15,
-zIndex: 1,
+   top: screenHeight * 0.08,
+zIndex: 2,
 paddingLeft: 20,
     },
 
@@ -134,7 +140,7 @@ paddingLeft: 20,
     textShadowRadius: 1,
     },
 
-    login: {
+    logintitle: {
       fontSize: 20,
       fontWeight: 'bold',
       color: 'rgba(255, 255, 255, 1)',
@@ -153,6 +159,7 @@ paddingLeft: 20,
      bottom: 0,
       borderTopLeftRadius: 33,
       borderTopRightRadius: 33,
+      zIndex: 3,
     },
 
     input: {
@@ -173,7 +180,7 @@ paddingLeft: 20,
       height: 30,
       aspectRatio: 32/10,
       marginTop: 5,
-      marginBottom: 5,
+      marginBottom: 8,
       alignItems: 'center',
       justifyContent: 'center',
     },

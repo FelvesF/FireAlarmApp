@@ -45,7 +45,7 @@ const Registerscreen = ({ navigation }) => {
   <Text style={styles.titleText2}>Detect. Alert. Protect.</Text>
   </View>
 
-<View>
+<View style={styles.bgview}>
 <Image style={styles.bg} source={require('../assets/images/firealarmbg.png')}></Image>
 
 </View>
@@ -115,9 +115,16 @@ const Registerscreen = ({ navigation }) => {
      
       
     },
+    bgview: {
+      position: 'absolute',
+      zIndex: 1,
+     
+      top: screenHeight * 0,
+    },
+
     bg: {
       width: screenWidth,
-      bottom: screenHeight * 0.18,
+      bottom: screenHeight * 0.1,
 resizeMode:'stretch',
     },
 
@@ -128,8 +135,8 @@ resizeMode:'stretch',
    display:'flex',
    
    position: 'absolute',
-   top: screenHeight * 0.15,
-zIndex: 1,
+   top: screenHeight * 0.08,
+zIndex: 2,
 paddingLeft: 20,
     },
 
@@ -159,7 +166,7 @@ paddingLeft: 20,
       marginTop: 25,
     },
     registerform: {
-      height : screenHeight * 0.43,
+      height : screenHeight * 0.42,
       width: screenWidth,
       backgroundColor:'rgba(80, 26, 33, 1)',
       display:'flex',
@@ -170,13 +177,14 @@ paddingLeft: 20,
      bottom: 0,
       borderTopLeftRadius: 33,
       borderTopRightRadius: 33,
+      zIndex: 3,
     },
 
     input: {
       backgroundColor: 'rgba(217, 217, 217, 1)',
       width:250,
       height:42,
-      marginBottom: 15,
+      marginBottom: 12,
       paddingLeft: 10,
       borderRadius: 5,
     },
@@ -189,7 +197,7 @@ paddingLeft: 20,
       borderRadius: 5,
       height: 30,
       aspectRatio: 32/10,
-      marginTop: 5,
+      
       marginBottom: 5,
       alignItems: 'center',
       justifyContent: 'center',

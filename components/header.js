@@ -17,13 +17,7 @@ const Header =({title}) => {
     <View style={styles.header}>
       <Text style={styles.headertitle}>{title}</Text>
       <View style={styles.headericons}>
-      <TouchableOpacity onPress={() => navigation.navigate('home')} >
-            <AntDesign name="home" size={28} color="white" />
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => navigation.navigate('about')} >
-                <Ionicons name="notifications-outline" size={28} color="white" />
-              </TouchableOpacity>
+     
 
               <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())} >
                 <FontAwesome name="navicon" size={28} color="white" />
@@ -58,8 +52,9 @@ headericons: {
    width: 120,
    height: 50,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     alignItems: 'center',
+  
     },
 
   });
