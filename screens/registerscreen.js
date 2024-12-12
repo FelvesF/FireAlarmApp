@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity,TextInput,Image, Dimensions } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity,TextInput,Image, StatusBar, Dimensions } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebaseConfig';  // Import Firestore
 import { setDoc, doc } from "firebase/firestore";  // Firestore functions to add documents
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -16,6 +18,31 @@ const Registerscreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState(''); // Added name state
   const [error, setError] = useState('');
+  const [isAppReady, setAppReady] = useState(false);
+    const [fontsLoaded] = useFonts({
+      Montserrat: require('../assets/fonts/Montserrat-Regular.ttf'),
+    });
+
+    
+      useEffect(() => {
+        const prepareApp = async () => {
+          try {
+            await SplashScreen.preventAutoHideAsync();
+    
+            if (fontsLoaded) {
+              setAppReady(true);
+            }
+          } catch (e) {
+            console.warn(e);
+          } finally {
+            if (fontsLoaded) await SplashScreen.hideAsync();
+          }
+        };
+    
+        prepareApp();
+      }, [fontsLoaded]);
+    
+      if (!isAppReady) return null;
 
   const handleRegister = async () => {
     try {
@@ -38,15 +65,19 @@ const Registerscreen = ({ navigation }) => {
 
     return (
       <View style={styles.container}>
+         <StatusBar
+                        barStyle="light-content"
+                        translucent={true}
+                        backgroundColor="transparent"
+                      />
  {error ? <Text style={styles.error}>{error}</Text> : null}
         <View style={styles.title}>
-  <Text style={styles.titleText}>FIRE</Text>
-  <Text style={styles.titleText}>ALARM</Text>
-  <Text style={styles.titleText2}>Detect. Alert. Protect.</Text>
+<Text style={styles.titleText}>Light</Text>
+  <Text style={styles.titleText}>Ease</Text>
   </View>
 
 <View style={styles.bgview}>
-<Image style={styles.bg} source={require('../assets/images/firealarmbg.png')}></Image>
+<Image style={styles.bg} source={require('../assets/images/lightbg.png')}></Image>
 
 </View>
 
@@ -125,7 +156,7 @@ const Registerscreen = ({ navigation }) => {
     bg: {
       width: screenWidth,
       bottom: screenHeight * 0.1,
-resizeMode:'stretch',
+resizeMode:'contain',
     },
 
     title: {
@@ -135,21 +166,24 @@ resizeMode:'stretch',
    display:'flex',
    
    position: 'absolute',
-   top: screenHeight * 0.08,
+   top: screenHeight * 0.07,
 zIndex: 2,
 paddingLeft: 20,
     },
 
     titleText: {
+      fontFamily: 'Montserrat',
       color:  'rgba(255, 255, 255, 1)',
-      fontSize: 50,
-      marginBottom: -10,
+      fontSize: 70,
+      fontWeight: 700,
+      marginBottom: -25,
       textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowOffset: { width: 3, height: 3 },
     textShadowRadius: 1,
     },
 
     titleText2: {
+      fontFamily: 'Montserrat',
       color:  'rgba(255, 255, 255, 1)',
       fontSize: 17,
       marginTop : 10,
@@ -159,11 +193,12 @@ paddingLeft: 20,
     },
 
     register: {
-      fontSize: 20,
-      fontWeight: 'bold',
+      fontFamily: 'Montserrat',
+      fontSize: 24,
+      fontWeight: 800,
       color: 'rgba(255, 255, 255, 1)',
-      marginBottom: 25,
-      marginTop: 25,
+      marginBottom: 20,
+      marginTop: 20,
     },
     registerform: {
       height : screenHeight * 0.42,
@@ -181,12 +216,13 @@ paddingLeft: 20,
     },
 
     input: {
+      fontFamily: 'Montserrat',
       backgroundColor: 'rgba(217, 217, 217, 1)',
       width:250,
       height:42,
       marginBottom: 12,
       paddingLeft: 10,
-      borderRadius: 5,
+      borderRadius: 10,
     },
 
 
@@ -197,23 +233,26 @@ paddingLeft: 20,
       borderRadius: 5,
       height: 30,
       aspectRatio: 32/10,
-      
-      marginBottom: 5,
+      marginTop: 5,
+      marginBottom: 10,
       alignItems: 'center',
       justifyContent: 'center',
     },
     buttonText: {
+      fontFamily: 'Montserrat',
       color: 'rgba(44, 29, 27, 0.8)',
       fontSize: 15,
 textAlign:'center',
     },
     forgotText: {
+      fontFamily: 'Montserrat',
       color:  'rgba(255, 255, 255, 1)',
       fontSize: 12,
     },
 
 
     forgot: {
+      fontFamily: 'Montserrat',
 fontSize: 10,
 color : 'rgba(255, 255, 255, 1)',
     },

@@ -66,7 +66,7 @@ function Homescreen () {
     backgroundColor="rgba(80, 26, 33, 1)"
     barStyle="light-content"
   />
-    <Header title='FIRE ALARM'/>
+    <Header title='LIGHT EASE'/>
     <ScrollView style={styles.container}>
 
       <View style={styles.body}>

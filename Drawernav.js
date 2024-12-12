@@ -1,9 +1,13 @@
 import 'react-native-gesture-handler';
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import {AntDesign, Ionicons, FontAwesome } from '@expo/vector-icons';
+import { signOut } from 'firebase/auth';
+import { auth } from './firebaseConfig'; 
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 
 import Homescreen from './screens/homescreen';
 import Aboutscreen from './screens/aboutscreen';
@@ -11,35 +15,51 @@ import Accountscreen from './screens/accountscreen';
 import { DrawerActions } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 50,
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-   
-  },
-  drawerbtn: {
-    textAlign: 'center',
-    justifyContent: 'center',
-    height: 60,
-    
-    width: '100%',
-  },
-  text: {
-    fontSize: 17,
-    textAlign: 'center',
-    fontWeight: '900',
-    color: '#fff',
-  },
-});
+
 
 
 const Drawer = createDrawerNavigator();
 
-const Drawernav = () => {
+function Drawernav ({ navigation })  {
+ const [isAppReady, setAppReady] = useState(false);
+    const [fontsLoaded] = useFonts({
+      Montserrat: require('./assets/fonts/Montserrat-Regular.ttf'),
+    });
+
+    
+          useEffect(() => {
+            const prepareApp = async () => {
+              try {
+                await SplashScreen.preventAutoHideAsync();
+        
+                if (fontsLoaded) {
+                  setAppReady(true);
+                }
+              } catch (e) {
+                console.warn(e);
+              } finally {
+                if (fontsLoaded) await SplashScreen.hideAsync();
+              }
+            };
+        
+            prepareApp();
+          }, [fontsLoaded]);
+        
+          if (!isAppReady) return null;
+    
+  
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      console.log('User logged out successfully');
+      // Redirect to login screen after logout
+      // Use navigation or any method to go back to the login page
+      navigation.replace('login'); // Assuming you're using React Navigation
+    } catch (error) {
+      console.error('Error logging out:', error.message);
+    }
+  };
+
   return (
     <Drawer.Navigator
       screenOptions={{
@@ -77,7 +97,7 @@ const Drawernav = () => {
             </TouchableOpacity>
            
             <TouchableOpacity
-              onPress={() => props.navigation.navigate('login')}
+             onPress={handleLogout}
               style={styles.drawerbtn}
             >
               <Text style={styles.text}>LOG OUT</Text>
@@ -105,5 +125,34 @@ const Drawernav = () => {
     </Drawer.Navigator>
   );
 };
+
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 50,
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+   
+  },
+  drawerbtn: {
+    textAlign: 'center',
+    justifyContent: 'center',
+    height: 60,
+    
+    width: '100%',
+  },
+  text: {
+    fontFamily: 'Montserrat',
+    fontSize: 20,
+    fontWeight: 900,
+    textAlign: 'center',
+    fontWeight: '900',
+    color: '#fff',
+  },
+});
+
 
 export default Drawernav;

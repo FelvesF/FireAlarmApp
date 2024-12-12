@@ -4,6 +4,7 @@ import { auth, db } from '../firebaseConfig';  // Import Firestore and auth
 import { getDoc, doc, updateDoc } from "firebase/firestore";  // Firestore functions to get and update documents
 import { updatePassword, updateEmail } from 'firebase/auth';  // Firebase Auth functions
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { signOut } from 'firebase/auth';
 import Header from '../components/header';
 
 
@@ -67,6 +68,18 @@ const Accountscreen = ({ navigation }) => {
     </TouchableOpacity>
   );
 
+  const handleLogout = async () => {
+      try {
+        await signOut(auth);
+        console.log('User logged out successfully');
+        // Redirect to login screen after logout
+        // Use navigation or any method to go back to the login page
+        navigation.replace('login'); // Assuming you're using React Navigation
+      } catch (error) {
+        console.error('Error logging out:', error.message);
+      }
+    };
+
   return (
 
     <SafeAreaView style={styles.safe}>
@@ -120,10 +133,7 @@ const Accountscreen = ({ navigation }) => {
 
         <CustomButton
           title="Logout"
-          onPress={() => {
-            auth.signOut();
-            navigation.navigate('Login');
-          }}
+          onPress={handleLogout}
           style={{ backgroundColor: '#501a21' }}
         />
     </KeyboardAvoidingView>

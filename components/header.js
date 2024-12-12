@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions, SafeAreaView } from 'react-native';
 import {AntDesign, Ionicons, FontAwesome } from '@expo/vector-icons';
 import { DrawerActions } from '@react-navigation/native';
 import { useNavigation } from '@react-navigation/native';
-
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
 
 
 const screenWidth = Dimensions.get('window').width;
@@ -11,6 +12,34 @@ const screenHeight = Dimensions.get('window').height;
 
 const Header =({title}) => {
   const navigation = useNavigation();
+   const [isAppReady, setAppReady] = useState(false);
+      const [fontsLoaded] = useFonts({
+        Montserrat: require('../assets/fonts/Montserrat-Regular.ttf'),
+      });
+
+      
+            useEffect(() => {
+              const prepareApp = async () => {
+                try {
+                  await SplashScreen.preventAutoHideAsync();
+          
+                  if (fontsLoaded) {
+                    setAppReady(true);
+                  }
+                } catch (e) {
+                  console.warn(e);
+                } finally {
+                  if (fontsLoaded) await SplashScreen.hideAsync();
+                }
+              };
+          
+              prepareApp();
+            }, [fontsLoaded]);
+          
+            if (!isAppReady) return null;
+      
+
+
   return (
   
     
@@ -43,9 +72,10 @@ const styles = StyleSheet.create({
       elevation: 20,
     },
     headertitle: {
+      fontFamily: 'Montserrat',
        color: 'white',
-      fontSize: 28,
-      fontWeight: 'bold',
+      fontSize: 32,
+      fontWeight: 700,
       
     },
 headericons: {
