@@ -1,4 +1,7 @@
 import { registerRootComponent } from 'expo';
+import 'react-native-reanimated';
+import 'react-native-gesture-handler';
+import Svg, { Path } from 'react-native-svg';
 
 import App from './App';
 

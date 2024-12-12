@@ -19,13 +19,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#501a21"
-      }
+      },
+      "package": "com.felves29.LightEase"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "c871d403-98a7-4cf2-bbe4-92a19ca83615"
+      }
+    }
   }
 }

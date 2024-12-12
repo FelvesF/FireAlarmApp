@@ -101,9 +101,8 @@ function Homescreen() {
       <StatusBar backgroundColor="rgba(80, 26, 33, 1)" barStyle="light-content" />
       <Header title="LIGHT EASE" />
       <ScrollView style={styles.container}>
-        <Text style={styles.title}>Homescreen</Text>
 
-        <Text style={styles.subtitle}>Light Consumption</Text>
+        <Text style={styles.subtitle1}>Light Consumption</Text>
         <View style={styles.card}>
           <Text style={styles.cardText}>
             <Text style={styles.boldText}>Time: </Text>{' '}
@@ -115,16 +114,16 @@ function Homescreen() {
           </Text>
         </View>
         <View style={styles.buttonContainer}>
-          <Text onPress={startTimer} style={styles.button}>
+          <Text onPress={startTimer} style={styles.button1}>
             Start
           </Text>
-          <Text onPress={stopTimer} style={styles.button}>
+          <Text onPress={stopTimer} style={styles.button2}>
             Stop
           </Text>
         </View>
 
         {/* History Section */}
-        <Text style={styles.subtitle}>History</Text>
+        <Text style={styles.subtitle2}>History</Text>
         {history.length > 0 ? (
           history.map((entry) => (
             <View key={entry.id} style={styles.card}>
@@ -166,8 +165,15 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: 20,
   },
-  subtitle: {
-    fontSize: 20,
+  subtitle1: {
+    fontSize: 32,
+    marginTop: 20,
+    marginBottom: 10,
+    textAlign: 'center',
+  },
+  subtitle2: {
+    fontSize: 32,
+    marginTop: 80,
     marginBottom: 10,
     textAlign: 'center',
   },
@@ -195,8 +201,17 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     marginTop: 20,
   },
-  button: {
-    backgroundColor: '#007bff',
+  button1: {
+    backgroundColor: '#04AA6D',
+    color: '#fff',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    textAlign: 'center',
+    fontSize: 16,
+  },
+  button2: {
+    backgroundColor: '#e12d27',
     color: '#fff',
     paddingVertical: 10,
     paddingHorizontal: 20,
