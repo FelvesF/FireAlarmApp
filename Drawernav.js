@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
   },
   uservalue: {
     fontFamily: 'Montserrat',
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 900,
     textAlign: 'center',
     fontWeight: '900',

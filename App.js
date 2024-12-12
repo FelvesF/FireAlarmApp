@@ -7,6 +7,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebaseConfig'; 
 import Loginscreen from './screens/loginscreen';
 import Registerscreen from './screens/registerscreen';
+import ForgotScreen from './screens/forgotscreen';
 import Drawernav from './Drawernav';
 
 
@@ -42,6 +43,7 @@ export default function App() {
         <Stack.Screen name="drawernav" component={Drawernav} options={{ headerShown: false }}/>
        <Stack.Screen name="login" component={Loginscreen} options={{ headerShown: false }} />
        <Stack.Screen name="register" component={Registerscreen} options={{ headerShown: false }}/>
+       
        </>
            
         ) : (
@@ -50,6 +52,7 @@ export default function App() {
         <Stack.Screen name="login" component={Loginscreen} options={{ headerShown: false }} />
         <Stack.Screen name="register" component={Registerscreen} options={{ headerShown: false }}/>
         <Stack.Screen name="drawernav" component={Drawernav} options={{ headerShown: false }}/>
+        <Stack.Screen name="forgot" component={ForgotScreen} options={{ headerShown: false }}/>
        </>
         )}
 
