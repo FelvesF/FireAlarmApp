@@ -27,16 +27,16 @@ export default function App() {
       image: require('../assets/images/flores.jpg'),
     },
     { 
-      name: 'Nathaniel Neo Esquillo', 
+      name: 'Ron Bayson', 
       role: 'FrontEnd Developer', 
       description: 'Develops the user interface and ensures a smooth user experience.',
-      image: require('../assets/images/neo.jpg'),
+         image: require('../assets/images/ron.jpg'),
     },
     { 
-      name: 'Ron Bayson', 
+    name: 'Nathaniel Neo Esquillo', 
       role: 'Database Administrator', 
       description: 'Manages and maintains the database to ensure its integrity and security.',
-      image: require('../assets/images/ron.jpg'),
+      image: require('../assets/images/neo.jpg'),   
     },
     { 
       name: 'Jesselle Anne Aquino', 
@@ -82,12 +82,15 @@ export default function App() {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.p1}>
           <Text style={styles.t1}>
-            The Fire Alarm mobile app project is designed to enhance safety and emergency 
-            response by providing an automated alert system for fire and smoke detection.
-            This innovative application utilizes advanced sensors to detect the presence of fire or smoke and instantly 
-            triggers an alarm, notifying users through their mobile devices.
-            The app aims to offer a reliable and efficient solution to ensure timely warnings 
-            and potentially save lives in emergency situations.
+          Light Ease is a user-friendly mobile application designed to provide effortless control 
+          over your home lighting. With a focus on simplicity and reliability, Light Ease allows you to
+           seamlessly control your smart bulb from anywhere, ensuring your home is always lit just the 
+           way you want it. The app features remote control capabilities, enabling you to turn your lights 
+           on and off with a tap on your mobile device. Additionally, it sends notifications to ensure your
+            lights are turned off when they should be, saving energy and giving you peace of mind. 
+            Experience the ease of managing your home lighting with Light Ease—the perfect app for
+             ensuring your lights are always under your control.
+
           </Text>
         </View>
 
