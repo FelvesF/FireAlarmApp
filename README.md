@@ -2,7 +2,7 @@ GROUP 7
 BSIT 3D (2024-2025)
 
 Group Leader and Project Manager: Kenneth Mago,        
-Group Members:
+Group Members:    
   Mary Jean Dayandayan - UI/UX Designer,    
   Ron Bayson - Front End Developer,    
   Felves Flores - Back End Developer,    
