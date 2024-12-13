@@ -10,7 +10,6 @@ import Header from '../components/header';
 
 
 const Accountscreen = ({ navigation }) => {
-  const navigations = useNavigation();
   const [user, setUser] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -69,18 +68,7 @@ const Accountscreen = ({ navigation }) => {
     </TouchableOpacity>
   );
 
-  const handleLogout = async () => {
-      try {
-        await signOut(auth);
-        console.log('User logged out successfully');
-        // Redirect to login screen after logout
-        // Use navigation or any method to go back to the login page
-        navigations.navigate('login'); // Assuming you're using React Navigation
-      } catch (error) {
-        console.error('Error logging out:', error.message);
-      }
-    };
-
+ 
   return (
 
     <SafeAreaView style={styles.safe}>
@@ -132,11 +120,7 @@ const Accountscreen = ({ navigation }) => {
           style={{ backgroundColor: '#00a6bd' }}
         />
 
-        <CustomButton
-          title="Logout"
-          onPress={handleLogout}
-          style={{ backgroundColor: '#501a21' }}
-        />
+       
     </KeyboardAvoidingView>
 
     </SafeAreaView>
