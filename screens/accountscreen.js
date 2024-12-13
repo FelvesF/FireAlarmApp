@@ -10,6 +10,7 @@ import Header from '../components/header';
 
 
 const Accountscreen = ({ navigation }) => {
+  const navigations = useNavigation();
   const [user, setUser] = useState(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -74,7 +75,7 @@ const Accountscreen = ({ navigation }) => {
         console.log('User logged out successfully');
         // Redirect to login screen after logout
         // Use navigation or any method to go back to the login page
-        navigation.replace('login'); // Assuming you're using React Navigation
+        navigations.navigate('login'); // Assuming you're using React Navigation
       } catch (error) {
         console.error('Error logging out:', error.message);
       }

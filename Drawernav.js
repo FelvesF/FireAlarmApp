@@ -10,6 +10,8 @@ import { getDoc, doc} from "firebase/firestore";
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 
+
+
 import Homescreen from './screens/homescreen';
 import Aboutscreen from './screens/aboutscreen';
 import Accountscreen from './screens/accountscreen';
@@ -22,6 +24,7 @@ import { useNavigation } from '@react-navigation/native';
 const Drawer = createDrawerNavigator();
 
 function Drawernav ({ navigation })  {
+  const navigations = useNavigation();
    const [name, setName] = useState('');
     const [error, setError] = useState('');
  const [isAppReady, setAppReady] = useState(false);
@@ -80,7 +83,7 @@ function Drawernav ({ navigation })  {
       console.log('User logged out successfully');
       // Redirect to login screen after logout
       // Use navigation or any method to go back to the login page
-      navigation.replace('login'); // Assuming you're using React Navigation
+      navigations.navigate('login'); // Assuming you're using React Navigation
     } catch (error) {
       console.error('Error logging out:', error.message);
     }
