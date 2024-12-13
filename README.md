@@ -1,15 +1,15 @@
 GROUP 7
 BSIT 3D (2024-2025)
 
-Group Leader and Project Manager: Kenneth Mago
+Group Leader and Project Manager: Kenneth Mago,        
 Group Members:
-Mary Jean Dayandayan - UI/UX Designer
-Ron Bayson - Front End Developer
-Felves Flores - Back End Developer
-Nathaniel Neo Esquillo - Database Administrator
-Jeselle Aquino - Assurance Specialist
-Nicol Jolo - Release Manager
-Donna Mae Javier - User Insights Specialist
+  Mary Jean Dayandayan - UI/UX Designer,    
+  Ron Bayson - Front End Developer,    
+  Felves Flores - Back End Developer,    
+  Nathaniel Neo Esquillo - Database Administrator,    
+  Jeselle Aquino - Assurance Specialist,    
+  Nicol Jolo - Release Manager,    
+  Donna Mae Javier - User Insights Specialist    
 
 
 LIGHT EASE
