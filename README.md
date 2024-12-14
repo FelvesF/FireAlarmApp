@@ -20,3 +20,5 @@ The app features remote control capabilities, enabling you to turn your lights o
 Additionally, it sends notifications to ensure your lights are turned off when they should be, saving energy and giving you peace of mind. 
 Experience the ease of managing your home lighting with Light Ease—the perfect app for ensuring your lights are always under your control.
 
+github:
+https://github.com/FelvesF/Light-Ease.git
